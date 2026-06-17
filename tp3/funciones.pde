@@ -1,28 +1,21 @@
 //Funcion que dibuja los circulos
 
-void dibujarCirculo(float x, float y, float z, float lol) {
-  if (apretao) {
-    fill(whatacolor);
-    //Si se mantiene apretado cambia lugar de circulos
-    if (mantenio) {
-      translate(random(-3, 3), random(-3, 3));
-      z = random(1, 25);
-      circle(x, y, z);
-    } else if (mousePressed && mouseButton == 39) {
-      float dx = x - mouseX;
-      float dy = y - mouseY;
-      float d = distancia(x, y);
-      float fuerza = juerza / d;
-      x = x + (dx / d)*fuerza;
-      y = y + (dy / d)*fuerza;
-      circle(x, y, z);
-    } else circle(x, y, z);
-    fill(#FFFFFF, lol);
+void dibujarCirculo(float x, float y, float z) {
+
+  //Si se mantiene apretado cambia lugar de circulos
+  if (mantenio) {
+    translate(random(-3, 3), random(-3, 3));
+    z = random(1, 25);
     circle(x, y, z);
-  } else {
-    fill(#FFFFFF);
+  } else if (mousePressed && mouseButton == 39) {
+    float dx = x - mouseX;
+    float dy = y - mouseY;
+    float d = distancia(x, y);
+    float fuerza = juerza / d;
+    x = x + (dx / d)*fuerza;
+    y = y + (dy / d)*fuerza;
     circle(x, y, z);
-  }
+  } else circle(x, y, z);
 }
 
 float distancia (float x, float y) {
@@ -32,42 +25,51 @@ float distancia (float x, float y) {
 }
 
 void keyPressed() {
-  //Radio mas chico
-  if (key == '1') {
-    crazy++;
-  }
-  //Radio mas grande
-  if (key == '2' && crazy > 0) {
-    crazy--;
-  }
   //Reset de estado del programa
   if (key == 'r') {
-    apretao = false;
     juerza = 500;
-  }
-  //Color del radio a azul
-  if (key == 'b') {
-    whatacolor = color(0, 0, 255);
+    translate(0, 0);
+    rotate(radians(0));
+    giro = false;
+    ang = 0;
   }
   if (key == 'q') {
     juerza = juerza-100;
   }
   //Radio mas grande
-  if (key == 'e' && crazy > 0) {
+  if (key == 'e') {
     juerza = juerza+100;
+  }
+  if (key == 'g') {
+    giro = true;
   }
 }
 
 void mousePressed() {
   println(mouseButton);
   if (mouseButton == 37) {
-    whatacolor = color(0, 255, 0);
-    apretao = true;
     mantenio=true;
   }
 }
 
 void mouseReleased() {
-  whatacolor = color(255, 0, 0);
   mantenio = false;
+}
+
+void dibujarGrid(int d1, int d2) {
+  for (int j = 0; j<16; j++) {
+    float z = 16;
+    for (int i = 0; i<14; i++) {
+      if (i<7) {
+        z = (z+1.5);
+      } else {
+        if (i>8) {
+          z = (z-1.5);
+        }
+      }
+      float x = 410 +(28*i);
+      float y = -1+(25.85*j);
+      dibujarCirculo(x - d1, y -d2, z);
+    }
+  }
 }
