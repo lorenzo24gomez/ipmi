@@ -60,15 +60,20 @@ void dibujarGrid(int d1, int d2) {
   for (int j = 0; j<16; j++) {
     float z = 16;
     for (int i = 0; i<14; i++) {
-      if (i<7) {
-        z = (z+1.5);
-      } else {
-        if (i>8) {
-          z = (z-1.5);
-        }
-      }
-      float x = 410 +(28*i);
-      float y = -1+(25.85*j);
+      float x = 410 +(29*i);
+      float y = -1+(25.75*j);
+      if (i < 6) {
+        z = map(i, 0, 6, 17.5, 25);
+      } else if (i > 7) {
+        z = map(i, 8, 15, 25, 17.5);
+      } else z = 27;
+      // if (i<7) {
+      //   z = (z+1.5);
+      // } else {
+      //   if (i>8) {
+      //     z = (z-1.5);
+      //   }
+      // }
       dibujarCirculo(x - d1, y -d2, z);
     }
   }
