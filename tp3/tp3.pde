@@ -1,18 +1,20 @@
+//Video =https://youtu.be/xZZpFbQqut4
+
 // INSTRUCCIONES
-//  -Mantener click izquierdo para modo sin control
-//  -Mantener click derecho para alejar círculos del mouse
-//  -q y e para cambiar la distancia del círculo
+//  -Click izquierdo hace que el los circulos cambien de tamaño y lugar de forma random
+//  -Mantener click derecho hace que los circulos a una distancia del mouse sigan al mouse
+//  -q y e para cambiar el tamaño de la distancia del click derecho
 //  -r para reset del programa
 //  -g para que giren todos los circulos
 
 
 PImage miImagen;
-//Boolean que dice si el mouse esta siendo apretado
-boolean mantenio = false;
+//Boolean que dice si el mouse fue apretado
+boolean tocado = false;
 //Boolean que informa si esta girando el canvas
 boolean giro = false;
-//Fuerza de alejamiento
-float juerza = 500;
+//Tamaño del la distancia en la que los circulos siguen al mouse
+float tam = 100;
 //Cantidad de grados que gira el canvas
 float ang = 0;
 
