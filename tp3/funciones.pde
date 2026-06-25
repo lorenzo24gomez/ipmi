@@ -4,8 +4,10 @@ void dibujarCirculo(float x, float y, float z) {
 
   //Si se mantiene apretado cambia lugar y tamano de los circulos de forma aleatoria
   if (tocado) {
-    translate(random(-0.5, 0.5), random(-0.5, 0.5));
+    pushMatrix();
+    translate(random(-1, 1), random(-1, 1));
     circle(x, y, z);
+    popMatrix();
 
     //Si se mantiene click izquierdo pone todos los circulos en distancia "tam" del mouse en la pos del mouse
   } else if (mousePressed && mouseButton == RIGHT) {
