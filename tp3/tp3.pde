@@ -9,8 +9,6 @@
 
 
 PImage miImagen;
-//Boolean que dice si el mouse fue apretado
-boolean tocado = false;
 //Boolean que informa si esta girando el canvas
 boolean giro = false;
 //Tamaño del la distancia en la que los circulos siguen al mouse

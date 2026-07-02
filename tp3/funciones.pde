@@ -2,15 +2,7 @@
 
 void dibujarCirculo(float x, float y, float z) {
 
-  //Si se mantiene apretado cambia lugar y tamano de los circulos de forma aleatoria
-  if (tocado) {
-    pushMatrix();
-    translate(random(-1, 1), random(-1, 1));
-    circle(x, y, z);
-    popMatrix();
-
-    //Si se mantiene click izquierdo pone todos los circulos en distancia "tam" del mouse en la pos del mouse
-  } else if (mousePressed && mouseButton == RIGHT) {
+  if (mousePressed && mouseButton == RIGHT) {
     float d = distancia(x, y);
     if (d< tam) {
       x = mouseX;
@@ -34,9 +26,8 @@ void keyPressed() {
     rotate(radians(0));
     giro = false;
     ang = 0;
-    tocado=false;
   }
-  //circulo mas grande
+  //circulo mas chico
   if (key == 'q') {
     tam =tam-10;
   }
@@ -44,15 +35,12 @@ void keyPressed() {
   if (key == 'e') {
     tam =tam+10;
   }
-  if (key == 'g') {
-    giro = true;
-  }
 }
 
 void mouseClicked() {
   println(mouseButton);
   if (mouseButton == LEFT) {
-    tocado=true;
+    giro=true;
   }
 }
 
